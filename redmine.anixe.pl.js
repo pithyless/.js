@@ -26,7 +26,9 @@ if ($('#content h2:first').text() == 'Roadmap') {
   $('table.related-issues').find('tr.hascontextmenu').each(function() {
     var task = $(this).find('td:nth(1) a');
     var status = '';
-    if(task.hasClass('priority-3')) {
+    if(task.hasClass('priority-2')) {
+      status = 'High';
+    } else if(task.hasClass('priority-3')) {
       status = 'Normal';
     } else if(task.hasClass('priority-4')) {
       status = 'Low';
@@ -45,9 +47,13 @@ if ($('#content h2:first').text() == 'Roadmap') {
     var status = '';
     if(task.hasClass('status-1')) {
       status = 'New';
+    } else if(task.hasClass('status-2')) {
+      status = 'In Progress'
+      // status = "In Progress: " + $('#context-menu').find('a.submenu:contains("Assignee")').next('ul').find('a.icon-checked').text();
+      $row.css('color', '#0A992C');
     } else if(task.hasClass('status-3')) {
       status = 'Resolved';
-      $row.css('color', '#0A992C');
+      $row.css('color', '#839FB4');
     } else if(task.hasClass('status-5')) {
       status = 'Closed';
       $row.css('color', '#999').css('text-decoration', 'line-through');
